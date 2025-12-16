@@ -1,16 +1,17 @@
-import random #importing module
-playing = True #initialise
-number = str(random.randint(10,20)) #random in-built function
- 
-print("I will generate a number from 10 to 20, and you have to guess the number one digit at a time.")
-print("The game ends when you get 1 hero!")
-#iterate loop till the condition is true    
-while playing:
-  guess = input("Give me your best guess! \n")
-  if number == guess:
-    print("You win the game")
-    print("The number was",number)
-    break 
-    
-  else:
-    print("Your guess isn't quite right, try again. \n")
+import random
+
+import time
+
+
+def getRandomDate(starDate, endDate):
+    print("Printing random date between", starDate, "and", endDate)
+    randomGenerator = random.random()
+    dateFormat = '%m/%d/%Y'
+    starttime = time.mktime(time.strptime(starDate, dateFormat))
+    endtime = time.mktime(time.strptime(endDate, dateFormat))
+    randomTime = starttime + randomGenerator * (endtime - starttime)
+    randomDate = time.strftime(dateFormat, time.localtime(randomTime))
+    return randomDate
+
+
+print("Random Date = ", getRandomDate("1/1/2020", "12/12/2024"))
